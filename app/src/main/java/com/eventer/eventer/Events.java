@@ -1,6 +1,10 @@
 package com.eventer.eventer;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -8,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,7 +21,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.content.Intent;
+
+import java.io.InputStream;
 
 
 public class Events extends ActionBarActivity
@@ -50,10 +60,24 @@ public class Events extends ActionBarActivity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment fragment;
+        FragmentManager fragmentManager = getSupportFragmentManager(); // For AppCompat use getSupportFragmentManager
+        switch(position) {
+            default:
+            case 0:
+                fragment = new Events.PlaceholderFragment().newInstance(1);
+                break;
+            case 1:
+                fragment = new Events.TaskFragment().newInstance(2);
+                break;
+        }
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .replace(R.id.container, fragment)
                 .commit();
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        fragmentManager.beginTransaction()
+//                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+//                .commit();
     }
 
     public void onSectionAttached(int number) {
@@ -135,6 +159,11 @@ public class Events extends ActionBarActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_events, container, false);
+            ((CardView)rootView.findViewById(R.id.card_view)).setPreventCornerOverlap(false);
+            ImageView image = (ImageView)rootView.findViewById(R.id.eventImage);
+            Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+            bitmap = ImageHelper.getRoundedCornerBitmap(bitmap, 15);
+            image.setImageBitmap(bitmap);
             return rootView;
         }
 
@@ -146,4 +175,78 @@ public class Events extends ActionBarActivity
         }
     }
 
+    /**
+     * Task view fragment
+     */
+    public static class TaskFragment extends Fragment {
+        public static final int PICK_IMAGE = 1;
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        public static TaskFragment newInstance(int sectionNumber) {
+            TaskFragment fragment = new TaskFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        public TaskFragment() {
+        }
+        View rootView;
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            rootView = inflater.inflate(R.layout.fragment_tasks, container, false);
+            Button btn = (Button)rootView.findViewById(R.id.btn);
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                    getIntent.setType("image/*");
+
+                    Intent pickIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    pickIntent.setType("image/*");
+
+                    Intent chooserIntent = Intent.createChooser(getIntent, "Select Image");
+                    chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[] {pickIntent});
+
+                    startActivityForResult(chooserIntent, PICK_IMAGE);
+                }
+            });
+            return rootView;
+        }
+
+        @Override
+        public void onActivityResult(int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+            if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK) {
+                if (data == null) {
+                    //Display an error
+                    return;
+                }
+                try {
+                    Context context = getActivity().getApplicationContext();
+                    InputStream is = context.getContentResolver().openInputStream(data.getData());
+                    Bitmap bm = BitmapFactory.decodeStream(is);
+                    ((ImageView)rootView.findViewById(R.id.img)).setImageBitmap(bm);
+                }catch(Exception e){}
+                //Now you can do whatever you want with your inpustream, save it as file, upload to a server, decode a bitmap...
+            }
+        }
+
+        @Override
+        public void onAttach(Activity activity) {
+            super.onAttach(activity);
+            ((Events) activity).onSectionAttached(
+                    getArguments().getInt(ARG_SECTION_NUMBER));
+        }
+    }
 }
