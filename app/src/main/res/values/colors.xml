@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#00cc00</color>
-    <color name="primaryDark">#00b800</color>
+    <color name="primary">#4CAF50</color> <!-- #00cc00 -->
+    <color name="primaryDark">#388E3C</color> <!-- 00b800 -->
     <color name="textPrimary">#de000000</color> <!--212121-->
     <color name="textSecondary">#8a000000</color> <!--717171-->
-    <color name="accent">#0000cc</color>
+    <color name="accent">#7C4DFF</color>
     <color name="activityBg">#ffffff</color>
 
     <!--base colors-->

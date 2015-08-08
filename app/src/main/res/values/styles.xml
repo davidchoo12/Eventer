@@ -10,12 +10,15 @@
         <!--   theme UI controls like checkboxes and text fields -->
         <item name="colorAccent">@color/accent</item>
         <!--<item name="windowBackground">@color/activityBg</item>-->
+        <item name="android:textColorPrimary">@color/white</item>
+        <!--for offed checkbox-->
+        <item name="android:textColorSecondary">@color/textSecondary</item>
     </style>
     <!--event category text style-->
     <style name="text_event_category" parent="@android:style/TextAppearance.Small">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingBottom">@dimen/padding_M</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/textPrimary</item>
     </style>
@@ -35,13 +38,13 @@
     <style name="text_event_title" parent="@android:style/TextAppearance.Medium">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingTop">24dp</item>
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">16dp</item>
-        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingTop">@dimen/padding_L</item>
+        <item name="android:paddingLeft">@dimen/padding_M</item>
+        <item name="android:paddingRight">@dimen/padding_M</item>
+        <item name="android:paddingBottom">@dimen/padding_M</item>
         <item name="android:textColor">@color/textPrimary</item>
         <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/text_title</item>
     </style>
     <!-- event details style -->
     <style name="text_event_desc" parent="@android:style/TextAppearance">
@@ -51,6 +54,36 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:textColor">@color/textSecondary</item>
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/text_body</item>
+    </style>
+
+    <!--task item title style-->
+    <style name="text_task_item_title" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/text_subhead</item>
+    </style>
+
+    <!--task item desc style-->
+    <style name="text_task_item_desc" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/padding_S</item>
+        <item name="android:textColor">@color/textSecondary</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/text_body</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!--task item date style-->
+    <style name="text_task_item_date" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/textSecondary</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/text_small</item>
     </style>
 </resources>

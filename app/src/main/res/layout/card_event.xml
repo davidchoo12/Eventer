@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/card_event">
+    <ImageView
+        android:id="@+id/event_image"
+        style="@style/image_event"/>
+    <TextView
+        android:id="@+id/event_title"
+        android:layout_below="@id/event_image"
+        style="@style/text_event_title"
+        android:text="Event title"/>
+    <TableLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        android:layout_below="@id/event_title">
+        <TableRow>
+            <ImageView
+                android:id="@+id/time_icon"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_access_time_black_24dp"/>
+            <TextView
+                android:id="@+id/event_time_text"
+                style="@style/text_event_desc"
+                android:layout_alignBottom="@+id/time_icon"
+                android:layout_toRightOf="@+id/time_icon"/>
+        </TableRow>
+        <TableRow android:paddingTop="4dp">
+            <ImageView
+                android:id="@+id/location_icon"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_location_on_black_24dp"/>
+            <TextView
+                android:id="@+id/event_location_text"
+                style="@style/text_event_desc"
+                android:layout_alignBottom="@+id/time_icon"
+                android:layout_toRightOf="@+id/time_icon"/>
+        </TableRow>
+        <TableRow android:paddingTop="4dp">
+            <ImageView
+                android:id="@+id/task_icon"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_list_black_24dp"/>
+            <TextView
+                android:id="@+id/event_task_text"
+                style="@style/text_event_desc"
+                android:layout_alignBottom="@+id/time_icon"
+                android:layout_toRightOf="@+id/time_icon"/>
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>
