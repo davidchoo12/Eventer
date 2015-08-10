@@ -5,21 +5,18 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:scrollbarDefaultDelayBeforeFade="@integer/abc_config_activityDefaultDur"
-            tools:context=".Main$TasksFragment">
+            tools:context=".Main$NotificationFragment">
 <LinearLayout android:id="@+id/task_list"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              tools:context=".Main$TasksFragment">
-    <!--<include-->
-        <!--layout="@layout/view_task"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"/>-->
-    <!--<include-->
-        <!--layout="@layout/view_task"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"/>-->
-    <com.eventer.eventer.TaskView
+              tools:context=".Main$NotificationsFragment">
+    <include
+        layout="@layout/view_notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <include
+        layout="@layout/view_notification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>

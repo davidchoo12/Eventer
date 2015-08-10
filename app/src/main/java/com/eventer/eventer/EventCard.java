@@ -1,17 +1,15 @@
 package com.eventer.eventer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.eventer.eventer.R;
 
 import java.lang.ref.WeakReference;
 
@@ -43,7 +41,7 @@ public class EventCard extends CardView {
 
     private void init() {
         this.setRadius(16);
-        inflate(getContext(), R.layout.card_event, this);
+        inflate(getContext(), R.layout.view_event, this);
         this.eventImage = (ImageView)findViewById(R.id.event_image);
         this.eventTitle = (TextView)findViewById(R.id.event_title);
         this.eventTime = (TextView)findViewById(R.id.event_time_text);
@@ -75,7 +73,6 @@ public class EventCard extends CardView {
     public void setEventTaskCount(String eventTaskCount) {
         this.eventTaskCount.setText(eventTaskCount);
     }
-
 
 
 

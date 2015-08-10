@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+    <com.andexert.library.RippleView
+        android:id="@+id/more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        rv_centered="true"
+        rv_alpha="20"
+        rv_rippleDuration="600"
+        rv_type="doubleRipple">
+    <ImageView
+        android:id="@+id/notification_img"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/transparent_circle"
+        android:background="@drawable/event_image"/>
+    <TextView
+        android:id="@+id/notification_desc"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="56dp"
+        android:text="David Choo invited you to help out with Windows 10 Demo Workshop due on Friday, May 22, 2015 at T0."
+        style="@style/text_notification_item_desc"
+        />
+    <Button
+        android:id="@+id/notification_btn_accept"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/notification_desc"
+        android:layout_marginTop="8dp"
+        android:paddingRight="0dp"
+        android:text="ACCEPT"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        />
+    <Button
+        android:id="@+id/notification_btn_decline"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/notification_desc"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="0dp"
+        android:textColor="@color/textSecondary"
+        android:text="DECLINE"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        />
+    </com.andexert.library.RippleView>
+</RelativeLayout>
+</merge>

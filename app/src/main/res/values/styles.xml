@@ -1,7 +1,9 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="android:fadeScrollbars">true</item>
         <!-- Main theme colors -->
         <!--   your app branding color for the app bar -->
         <item name="colorPrimary">@color/primary</item>
@@ -14,6 +16,15 @@
         <!--for offed checkbox-->
         <item name="android:textColorSecondary">@color/textSecondary</item>
     </style>
+
+    <style name="toolbar_theme" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textViewStyle">@style/toolbar_title</item>
+    </style>
+    <!--to adjust the actionbar title positioning, shift right by 12dp (default is 60dp to left of screen while guidelines requires 72dp)-->
+    <style name="toolbar_title" parent="TextAppearance.AppCompat.Title">
+        <item name="android:paddingLeft">12dp</item>
+    </style>
+
     <!--event category text style-->
     <style name="text_event_category" parent="@android:style/TextAppearance.Small">
         <item name="android:layout_width">wrap_content</item>
@@ -85,5 +96,26 @@
         <item name="android:textColor">@color/textSecondary</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textSize">@dimen/text_small</item>
+    </style>
+
+    <!--notification item image style-->
+    <style name="image_notification_item">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+
+    <!--notification item description text style-->
+    <style name="text_notification_item_desc">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/text_body</item>
+    </style>
+
+    <style name="text_body" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/text_body</item>
     </style>
 </resources>

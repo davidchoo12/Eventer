@@ -4,7 +4,8 @@
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                tools:context=".Events$PlaceholderFragment">
+                android:scrollbarDefaultDelayBeforeFade="@integer/abc_config_activityDefaultDur"
+                tools:context=".Main$EventsFragment">
 <LinearLayout
     android:id="@+id/event_list"
     android:orientation="vertical"
@@ -21,7 +22,7 @@
     <!--<android.support.v7.widget.CardView-->
         <!--android:id="@+id/eventCard"-->
         <!--android:layout_below="@id/section_label"-->
-        <!--style="@style/card_event">-->
+        <!--style="@style/view_event">-->
         <!--<RelativeLayout-->
             <!--android:layout_width="fill_parent"-->
             <!--android:layout_height="wrap_content">-->

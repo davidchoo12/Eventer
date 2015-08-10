@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp"
-                android:clickable="false"
-                android:focusable="false">
+                android:padding="16dp">
     <com.andexert.library.RippleView
         android:id="@+id/more"
         android:layout_width="wrap_content"
@@ -18,7 +17,7 @@
         android:gravity="center"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginRight="@dimen/padding_S"
+        android:layout_marginRight="23dp"
         android:buttonTint="@color/primary"
         />
     <TextView
@@ -40,4 +39,5 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"/>
     </com.andexert.library.RippleView>
-</RelativeLayout>
+    </RelativeLayout>
+</merge>
