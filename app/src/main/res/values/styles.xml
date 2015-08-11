@@ -25,11 +25,11 @@
         <item name="android:paddingLeft">12dp</item>
     </style>
 
-    <!--event category text style-->
-    <style name="text_event_category" parent="@android:style/TextAppearance.Small">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingBottom">@dimen/padding_M</item>
+    <!--category text style-->
+    <style name="text_category" parent="@android:style/TextAppearance.Small">
+        <!--<item name="android:layout_width">wrap_content</item>-->
+        <!--<item name="android:layout_height">wrap_content</item>-->
+        <!--<item name="android:paddingBottom">@dimen/padding_M</item>-->
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/textPrimary</item>
     </style>

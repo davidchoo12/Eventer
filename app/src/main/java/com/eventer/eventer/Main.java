@@ -20,13 +20,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.ViewFlipper;
 
 import com.balysv.materialmenu.MaterialMenuDrawable;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 
 public class Main extends AppCompatActivity
@@ -203,12 +208,26 @@ public class Main extends AppCompatActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_events, container, false);
-            EventCard edwardsWedding = (EventCard)rootView.findViewById(R.id.edwards_wedding_card);
+//            EventCard edwardsWedding = (EventCard)rootView.findViewById(R.id.edwards_wedding_card);
+
+            ListView eventList = (ListView)rootView.findViewById(R.id.event_list);
+            View header = inflater.inflate(R.layout.textview_category_header, null);
+            eventList.addHeaderView(header);
+            ImageView footer = new ImageView(getActivity());
+            footer.setImageResource(R.drawable.divider);
+            eventList.addFooterView(footer);
+            EventCard edwardsWedding = new EventCard(getActivity());
             edwardsWedding.setEventImage(R.drawable.event_image);
             edwardsWedding.setEventTitle("Edward's Wedding asdf");
             edwardsWedding.setEventTime("Sat, August 1, 7pm - 10pm asdf");
             edwardsWedding.setEventLoc("Marina Bay Sands asdf");
             edwardsWedding.setEventTaskCount("2 tasks : 2 todo asdf");
+
+            ArrayList<EventCard> eventCardArrayList = new ArrayList<EventCard>();
+            eventCardArrayList.add(edwardsWedding);
+
+            EventAdapter eventAdapter = new EventAdapter(getActivity(), R.layout.view_event, eventCardArrayList);
+            eventList.setAdapter(eventAdapter);
 
             EventCard test = new EventCard(getActivity());
             test.setEventImage(R.drawable.event_image);
@@ -216,11 +235,24 @@ public class Main extends AppCompatActivity
             test.setEventTime("Sat, August 1, 7pm - 10pm test");
             test.setEventLoc("Marina Bay Sands test");
             test.setEventTaskCount("2 tasks : 2 todo test");
+            eventAdapter.add(test);
+
+            //copy
+//            ArrayList<EventCard> eventCardArrayList1 = new ArrayList<EventCard>(eventCardArrayList);
+//            eventCardArrayList1.add(test);
+//            eventAdapter.notifyDataSetChanged();
+//            eventAdapter.updateEventList(eventCardArrayList1);
+//            eventList.setAdapter(eventAdapter);
             // insert into main view
-            ViewGroup insertPoint = (ViewGroup) rootView.findViewById(R.id.event_list);
-            insertPoint.addView(test);
+//            ViewGroup insertPoint = (ViewGroup) rootView.findViewById(R.id.event_list);
+//            insertPoint.addView(test);
 
             return rootView;
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
         }
     }
 

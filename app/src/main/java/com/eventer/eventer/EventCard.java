@@ -5,10 +5,15 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
+import android.view.ViewGroup;
+import android.widget.ActionMenuView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
@@ -17,6 +22,46 @@ import java.lang.ref.WeakReference;
  * Created by P1451298 on 8/8/2015.
  */
 public class EventCard extends CardView {
+
+    public ImageView getEventImage() {
+        return eventImage;
+    }
+
+    public TextView getEventTitle() {
+        return eventTitle;
+    }
+
+    public TextView getEventTime() {
+        return eventTime;
+    }
+
+    public TextView getEventLoc() {
+        return eventLoc;
+    }
+
+    public TextView getEventTaskCount() {
+        return eventTaskCount;
+    }
+
+    public void setEventImage(ImageView eventImage) {
+        this.eventImage = eventImage;
+    }
+
+    public void setEventTitle(TextView eventTitle) {
+        this.eventTitle = eventTitle;
+    }
+
+    public void setEventTime(TextView eventTime) {
+        this.eventTime = eventTime;
+    }
+
+    public void setEventLoc(TextView eventLoc) {
+        this.eventLoc = eventLoc;
+    }
+
+    public void setEventTaskCount(TextView eventTaskCount) {
+        this.eventTaskCount = eventTaskCount;
+    }
 
     private ImageView eventImage;
     private TextView eventTitle;
@@ -41,6 +86,10 @@ public class EventCard extends CardView {
 
     private void init() {
         this.setRadius(16);
+        this.setPreventCornerOverlap(false);
+//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ListView.LayoutParams.WRAP_CONTENT, ListView.LayoutParams.WRAP_CONTENT);
+//        params.setMargins(Main.dpToPx(16), 0, Main.dpToPx(16), Main.dpToPx(16));
+//        this.setLayoutParams(params);
         inflate(getContext(), R.layout.view_event, this);
         this.eventImage = (ImageView)findViewById(R.id.event_image);
         this.eventTitle = (TextView)findViewById(R.id.event_title);
@@ -58,6 +107,11 @@ public class EventCard extends CardView {
         bitmap = ImageHelper.getRoundedCornerBitmap(bitmap, (int)this.getRadius()*2);
         this.eventImage.setImageBitmap(bitmap);
     }
+
+    public void setEventImage(Bitmap imageBitmap){
+        Bitmap bitmap = ImageHelper.getRoundedCornerBitmap(imageBitmap, (int)this.getRadius()*2);
+        this.eventImage.setImageBitmap(bitmap);
+    }
     public void setEventTitle(String eventTitle) {
         this.eventTitle.setText(eventTitle);
     }
@@ -70,9 +124,7 @@ public class EventCard extends CardView {
         this.eventLoc.setText(eventLoc);
     }
 
-    public void setEventTaskCount(String eventTaskCount) {
-        this.eventTaskCount.setText(eventTaskCount);
-    }
+    public void setEventTaskCount(String eventTaskCount) { this.eventTaskCount.setText(eventTaskCount); }
 
 
 
