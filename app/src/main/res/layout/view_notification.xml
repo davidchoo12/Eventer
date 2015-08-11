@@ -12,12 +12,13 @@
         rv_alpha="20"
         rv_rippleDuration="600"
         rv_type="doubleRipple">
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/notification_img"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/transparent_circle"
-        android:background="@drawable/event_image"/>
+        android:src="@drawable/event_image"
+        app:border_color="#FF000000"/>
     <TextView
         android:id="@+id/notification_desc"
         android:layout_alignParentLeft="true"
