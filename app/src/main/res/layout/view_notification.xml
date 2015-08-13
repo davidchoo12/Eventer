@@ -3,7 +3,10 @@
 <RelativeLayout android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp">
+                android:paddingTop="@dimen/padding_M"
+                android:paddingLeft="@dimen/padding_M"
+                android:paddingRight="@dimen/padding_M"
+                android:paddingBottom="0dp">
     <com.andexert.library.RippleView
         android:id="@+id/more"
         android:layout_width="wrap_content"

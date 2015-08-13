@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/task_list"
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:scrollbarDefaultDelayBeforeFade="@integer/abc_config_activityDefaultDur"
             tools:context=".Main$TasksFragment">
-<LinearLayout android:id="@+id/task_list"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context=".Main$TasksFragment">
-    <!--<include-->
-        <!--layout="@layout/view_task"-->
+<!--<LinearLayout -->
+              <!--android:layout_width="match_parent"-->
+              <!--android:layout_height="match_parent"-->
+              <!--android:orientation="vertical"-->
+              <!--tools:context=".Main$TasksFragment">-->
+    <!--&lt;!&ndash;<include&ndash;&gt;-->
+        <!--&lt;!&ndash;layout="@layout/view_task"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;<include&ndash;&gt;-->
+        <!--&lt;!&ndash;layout="@layout/view_task"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content"/>&ndash;&gt;-->
+    <!--<com.eventer.eventer.TaskView-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content"/>-->
-    <!--<include-->
-        <!--layout="@layout/view_task"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"/>-->
-    <com.eventer.eventer.TaskView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
-</ScrollView>
+<!--</LinearLayout>-->
+</ListView>
