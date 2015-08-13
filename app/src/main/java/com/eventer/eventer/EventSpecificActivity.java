@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -163,7 +165,13 @@ public class EventSpecificActivity extends AppCompatActivity implements ActionBa
             getActivity().getSupportFragmentManager().beginTransaction()
                     .replace(R.id.task_layout, taskFragment)
                     .commit();
-//            taskFragment.
+            ((FloatingActionButton)rootView.findViewById(R.id.fab)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(getActivity(), AddTask.class);
+                    startActivity(i);
+                }
+            });
             return rootView;
         }
     }

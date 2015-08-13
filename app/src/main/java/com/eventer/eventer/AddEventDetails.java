@@ -51,8 +51,7 @@ public class AddEventDetails extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(getApplicationContext(), Main.class);
-                myIntent.putExtra(Main.SECTION, Main.Section.EVENT.name());
+                Intent myIntent = new Intent(getApplicationContext(), CreateEventPicture.class);
                 startActivity(myIntent);
             }
         });

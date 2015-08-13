@@ -16,4 +16,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_add_event_details">AddEventDetails</string>
+    <string name="title_activity_add_event_picture">CreateEventPicture</string>
+    <string name="title_activity_add_event_members">CreateEventInvMembers</string>
+    <string name="title_activity_add_event_overview">NewEventOverview</string>
 </resources>

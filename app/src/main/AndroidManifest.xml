@@ -35,6 +35,18 @@
             android:name=".AddEventDetails"
             android:label="@string/title_activity_add_event_details" >
         </activity>
+        <activity
+            android:name=".CreateEventPicture"
+            android:label="@string/title_activity_add_event_picture" >
+        </activity>
+        <activity
+            android:name=".CreateEventInvMembers"
+            android:label="@string/title_activity_add_event_members" >
+        </activity>
+        <activity
+            android:name=".NewEventOverview"
+            android:label="@string/title_activity_add_event_overview" >
+        </activity>
     </application>
 
 </manifest>
