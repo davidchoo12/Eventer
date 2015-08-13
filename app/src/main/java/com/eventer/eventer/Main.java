@@ -3,8 +3,12 @@ package com.eventer.eventer;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.ActionBar;
@@ -15,17 +19,23 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.balysv.materialmenu.MaterialMenuDrawable;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -49,6 +59,8 @@ public class Main extends AppCompatActivity
     public static Context baseContext;
     public static String SECTION = "section";
     public static enum Section {TASK, EVENT, NOTIFICATION, PROFILE};
+    public static int CAMERA_PIC_REQUEST = 2;
+    public Uri tempUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -221,15 +233,15 @@ public class Main extends AppCompatActivity
      * Task view fragment
      */
     public static class TasksFragment extends PlaceholderFragment {
-
+        private Uri uriSavedImage;
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             rootView = inflater.inflate(R.layout.fragment_tasks, container, false);
             ListView eventList = (ListView)rootView.findViewById(R.id.task_list);
-//            ImageView footer = new ImageView(getActivity());
-//            footer.setImageResource(R.drawable.divider);
-//            eventList.addFooterView(footer);
+            ImageView footer = new ImageView(getActivity());
+            footer.setImageResource(R.drawable.divider);
+            eventList.addFooterView(footer);
 
             TaskView prepareRing = new TaskView(getActivity());
             prepareRing.setChecked(false);
@@ -249,16 +261,103 @@ public class Main extends AppCompatActivity
             testTask.setTaskDesc("Task description. The quick brown fox jumps over the lazy dog. Lorem ipsum here");
             testTask.setTaskDate(new GregorianCalendar(2017, Calendar.DECEMBER, 5));
             viewAdapter.add(testTask);
-
             return rootView;
         }
 
-//        @Override
-//        public void onDetach() {
-//            super.onDetach();
-//            //because no drawable for tasks so just skip to gc
-//            System.gc();
-//        }
+    }
+
+    public void getCamera(View v) {
+//                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                    startActivityForResult(intent, CAMERA_PIC_REQUEST);
+//        Intent takePicIntent = new Intent("android.media.action.IMAGE_CAPTURE");
+
+//        takePicIntent .putExtra("crop", "true");
+//        takePicIntent .putExtra("outputX", 200);
+//        takePicIntent .putExtra("outputY", 200);
+//        takePicIntent .putExtra("aspectX", 0);
+//        takePicIntent .putExtra("aspectY", 0);
+//        takePicIntent .putExtra("scale", true);
+//                    takePicIntent .putExtra(MediaStore.EXTRA_OUTPUT, ImageContentProvider.CONTENT_URI);
+//        takePicIntent .putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+//        takePicIntent.putExtra("return-data", false);
+//        startActivityForResult(takePicIntent, CAMERA_PIC_REQUEST);
+
+//                    Intent camera= new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+//                    uriSavedImage=Uri.fromFile(new File("/sdcard/flashCropped.png"));
+//                    camera.putExtra(MediaStore.EXTRA_OUTPUT, uriSavedImage);
+//                    startActivityForResult(camera, 1);
+
+        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        File tempFile = new File("asdf");
+        try{
+        tempFile = File.createTempFile("crop", "png", Environment.getExternalStorageDirectory());}
+        catch (Exception e) {
+            Log.e("test", e.toString());}
+        tempUri = Uri.fromFile(tempFile);
+        intent.setData(tempUri);
+        intent.putExtra("crop", true);
+        intent.putExtra("outputX", 200);
+        intent.putExtra("outputY", 200);
+        intent.putExtra("aspectX", 0);
+        intent.putExtra("aspectY", 0);
+        intent.putExtra("scale", true);
+        intent.putExtra("noFaceDetection", true);
+        intent.putExtra("output", tempUri); // with this enabled it replaces the original image and without it creates new one in gallery.
+        startActivityForResult(intent, 23);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+            Intent intent = new Intent("com.android.camera.action.CROP");
+            intent.setClassName("com.android.camera", "com.android.camera.CropImage");
+//            intent.setData(uriSavedImage);
+            intent.putExtra("crop", "true");
+            intent.putExtra("aspectX", 1);
+            intent.putExtra("aspectY", 1);
+            intent.putExtra("outputX", 96);
+            intent.putExtra("outputY", 96);
+            intent.putExtra("noFaceDetection", true);
+            intent.putExtra("return-data", true);
+            startActivityForResult(intent, CAMERA_PIC_REQUEST);
+        }
+        if (requestCode == CAMERA_PIC_REQUEST && resultCode == Activity.RESULT_OK) {
+            if (data == null) {
+                //Display an error
+                Toast.makeText(this, "Image not loaded", Toast.LENGTH_SHORT);
+                return;
+            }
+            try {
+                Context context = this.getApplicationContext();
+                InputStream is = context.getContentResolver().openInputStream(data.getData());
+                Bitmap bm = BitmapFactory.decodeStream(is);
+//                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//                    bm.compress(Bitmap.CompressFormat.JPEG, 75, stream);
+                ((ImageView)this.findViewById(R.id.img)).setImageBitmap(bm);
+            } catch(Exception e) {
+                Toast.makeText(this, "Image not found", Toast.LENGTH_SHORT);
+            }
+        }
+        if (requestCode == 23 && resultCode == Activity.RESULT_OK) {
+            if (data == null) {
+                //Display an error
+                Toast.makeText(this, "Image not loaded", Toast.LENGTH_SHORT);
+                return;
+            }
+            try {
+                Uri uri = data.getData();
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+//                Context context = this.getApplicationContext();
+//                InputStream is = context.getContentResolver().openInputStream(data.getData());
+//                Bitmap bm = BitmapFactory.decodeStream(is);
+//                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//                    bm.compress(Bitmap.CompressFormat.JPEG, 75, stream);
+                ((ImageView)this.findViewById(R.id.img)).setImageBitmap(bitmap);
+            } catch(Exception e) {
+                Toast.makeText(this, "Image not found", Toast.LENGTH_SHORT);
+            }
+        }
     }
 
     /**
@@ -303,6 +402,10 @@ public class Main extends AppCompatActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             rootView = inflater.inflate(R.layout.fragment_profile, container, false);
+            Toolbar tb = (Toolbar)rootView.findViewById(R.id.toolbar_profile);
+            tb.findViewById(R.id.profile_image);
+            tb.findViewById(R.id.profile_name);
+
             return rootView;
         }
 

@@ -1,43 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
     <com.andexert.library.RippleView
         android:id="@+id/more"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="16dp"
         rv_centered="true">
-    <CheckBox
-        android:id="@+id/task_checkbox"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginRight="23dp"
-        android:buttonTint="@color/primary"
-        />
-    <TextView
-        android:id="@+id/task_title"
-        android:layout_toRightOf="@+id/task_checkbox"
-        android:layout_alignParentTop="true"
-        android:text="Prepare Ring"
-        style="@style/text_task_item_title"/>
-    <TextView
-        android:id="@+id/task_desc"
-        android:layout_alignLeft="@id/task_title"
-        android:layout_below="@id/task_title"
-        android:text="Wedding ring must be made of the best quality of "
-        style="@style/text_task_item_desc"/>
-    <TextView
-        android:id="@+id/task_date"
-        android:text="Jul 10"
-        style="@style/text_task_item_date"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"/>
-    </com.andexert.library.RippleView>
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:id="@+id/task_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="23dp"
+            android:buttonTint="@color/primary"
+            />
+        <TextView
+            android:id="@+id/task_title"
+            android:layout_toRightOf="@+id/task_checkbox"
+            android:layout_alignParentTop="true"
+            android:text="Prepare Ring"
+            style="@style/text_task_item_title"/>
+        <TextView
+            android:id="@+id/task_desc"
+            android:layout_alignLeft="@id/task_title"
+            android:layout_below="@id/task_title"
+            android:text="Wedding ring must be made of the best quality of "
+            style="@style/text_task_item_desc"/>
+        <TextView
+            android:id="@+id/task_date"
+            android:text="Jul 10"
+            style="@style/text_task_item_date"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"/>
     </RelativeLayout>
+    </com.andexert.library.RippleView>
 </merge>

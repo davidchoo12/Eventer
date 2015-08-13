@@ -1,5 +1,8 @@
 package com.eventer.eventer;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 import android.support.design.widget.TabLayout;
@@ -18,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 
@@ -119,7 +123,7 @@ public class EventSpecificActivity extends AppCompatActivity implements ActionBa
             //TODO: create screens and add them here
             switch (position){
                 case 0:
-                    fragment = new Main.TasksFragment();
+                    fragment = new EventTasksFragment();
                     break;
                 default: fragment = new Main.EventsFragment();
             }
@@ -150,37 +154,21 @@ public class EventSpecificActivity extends AppCompatActivity implements ActionBa
     /**
      * A placeholder fragment containing a simple view.
      */
-//    public static class PlaceholderFragment extends Fragment {
-//        /**
-//         * The fragment argument representing the section number for this
-//         * fragment.
-//         */
-//        private static final String ARG_SECTION_NUMBER = "section_number";
-//
-//        /**
-//         * Returns a new instance of this fragment for the given section
-//         * number.
-//         */
-//        public static PlaceholderFragment newInstance(int sectionNumber) {
-//            PlaceholderFragment fragment = new PlaceholderFragment();
-//            Bundle args = new Bundle();
-//            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-//            fragment.setArguments(args);
-//            return fragment;
-//        }
-//
-//        public PlaceholderFragment() {
-//        }
-//
-//        @Override
-//        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                                 Bundle savedInstanceState) {
-//            View rootView = inflater.inflate(R.layout.fragment_event_specific, container, false);
-//            return rootView;
-//        }
-//    }
-//
+    public static class EventTasksFragment extends PlaceholderFragment {
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            rootView = inflater.inflate(R.layout.fragment_event_tasks, container, false);
+            Fragment taskFragment = new Main.TasksFragment();
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.task_layout, taskFragment)
+                    .commit();
+//            taskFragment.
+            return rootView;
+        }
+    }
 }
+//TODO implement linking with fab to add task activity
 
 
 
