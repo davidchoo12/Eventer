@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Continue button: green border, white background, round corners -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" android:padding="10dp">
+    <solid android:color="@color/activityBg"/>
+    <corners android:radius="5dp"/>
+    <stroke android:width="1px" android:color="@color/primary" />
+</shape>

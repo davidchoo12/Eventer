@@ -21,7 +21,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-public class EventSpecificActivity extends AppCompatActivity implements ActionBar.TabListener, PlaceholderFragment.PlaceholderFragmentAttachedListener {
+public class EventSpecificActivity extends AppCompatActivity implements ActionBar.TabListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -100,10 +100,6 @@ public class EventSpecificActivity extends AppCompatActivity implements ActionBa
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction){}
 
-    @Override
-    public void onAttachPlaceholderFragment(int sectionNumber) {
-
-    }
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -123,9 +119,9 @@ public class EventSpecificActivity extends AppCompatActivity implements ActionBa
             //TODO: create screens and add them here
             switch (position){
                 case 0:
-                    fragment = Main.TasksFragment.newInstance(1);
+                    fragment = new Main.TasksFragment();
                     break;
-                default: fragment = Main.EventsFragment.newInstance(2);
+                default: fragment = new Main.EventsFragment();
             }
             return fragment;
         }
