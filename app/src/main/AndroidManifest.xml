@@ -12,10 +12,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:largeHeap="true">
+        android:largeHeap="true"
+        android:theme="@style/AppTheme" >
         <activity
-            android:name=".Main"
+            android:name=".AddEventDetails"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,14 +23,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".EventSpecificActivity"
-            android:label="@string/title_activity_event_specific"
-            android:parentActivityName=".Main" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.eventer.eventer.Main" />
-        </activity>
+        <!--<activity-->
+            <!--android:name=".EventSpecificActivity"-->
+            <!--android:label="@string/title_activity_event_specific"-->
+            <!--android:parentActivityName=".Main" >-->
+            <!--<meta-data-->
+                <!--android:name="android.support.PARENT_ACTIVITY"-->
+                <!--android:value="com.eventer.eventer.Main" />-->
+        <!--</activity>-->
+        <!--<activity-->
+            <!--android:name=".AddEventDetails"-->
+            <!--android:label="@string/title_activity_add_event_details" >-->
+        <!--</activity>-->
     </application>
 
 </manifest>

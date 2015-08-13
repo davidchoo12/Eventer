@@ -1,0 +1,10 @@
+TODOs
+
+navigation drawer
+swipe to decline or accept notification with undo
+listview with adapters?
+profile screen
+
+tabbed layout view pager with toolbar
+use coordinator layout to hide toolbar on scroll
+animate event title to toolbar title
