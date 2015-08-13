@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/activityBg">
+
+    <!-- Event Overview Screen -->
+
+    <ImageView
+        android:id="@+id/event_overview_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/event_image"
+        android:adjustViewBounds="true"
+        />
+
+    <TableLayout
+        android:id="@+id/table_new_event_info"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <!-- Event icon -->
+            <ImageView
+                android:id="@+id/event_img"
+                android:src="@drawable/ic_event_black_24dp"
+                />
+            <!-- Event Overview Name -->
+            <TextView
+                android:id="@+id/event_overview_name"
+                android:padding="8dp"
+                android:textColor="@color/textPrimary"
+                android:textSize="20sp"
+                android:text="@string/eventName"
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <!-- Time icon -->
+            <ImageView
+                android:id="@+id/time_img"
+                android:src="@drawable/ic_access_time_black_24dp"
+                />
+            <!-- Event Overview Date -->
+            <TextView
+                android:id="@+id/event_overview_date"
+                android:padding="8dp"
+                android:textColor="@color/textPrimary"
+                android:textSize="20sp"
+                android:text="@string/eventDate"
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25dp"
+            android:paddingRight="16dp">
+
+            <!-- Empty column -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:orientation="vertical">
+            </LinearLayout>
+            <!-- Event Overview Time -->
+            <TextView
+                android:id="@+id/event_overview_time"
+                android:layout_span="2"
+                android:textSize="18sp"
+                android:text="@string/eventTime"
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <!-- Location Icon -->
+            <ImageView
+                android:id="@+id/location_img"
+                android:src="@drawable/ic_location_on_black_24dp"
+                />
+            <!-- Event Overview Location -->
+            <TextView
+                android:id="@+id/event_overview_location"
+                android:padding="8dp"
+                android:textColor="@color/textPrimary"
+                android:textSize="20sp"
+                android:text="@string/eventLocation"
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25dp"
+            android:paddingRight="16dp">
+
+            <!-- Empty column -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:orientation="vertical">
+            </LinearLayout>
+            <!-- Event Overview Location Address -->
+            <TextView
+                android:id="@+id/event_overview_location_add"
+                android:layout_span="2"
+                android:textSize="18sp"
+                android:text="@string/eventLocationAddress"
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <!-- Reorder icon -->
+            <ImageView
+                android:id="@+id/reorder_img"
+                android:src="@drawable/ic_reorder_black_24dp"
+                />
+            <!-- Event Overview Description -->
+            <TextView
+                android:id="@+id/event_overview_desc"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:textColor="@color/textSecondary"
+                android:textSize="20sp"
+                android:text="@string/eventDesc"
+                />
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>

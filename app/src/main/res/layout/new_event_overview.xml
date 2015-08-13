@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<android.support.v7.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    app:title="Event Overview"
+    android:background="?attr/colorPrimary"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/activityBg">
+
+    <!-- Event Overview Screen -->
+
+    <ImageView
+        android:id="@+id/event_overview_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/event_image"
+        android:adjustViewBounds="true"
+        />
+
+    <TableLayout
+        android:id="@+id/table_new_event_info"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <!-- Event icon -->
+            <ImageView
+                android:id="@+id/event_img"
+                android:src="@drawable/ic_event_black_24dp"
+                />
+            <!-- Event Overview Name -->
+            <TextView
+                android:id="@+id/event_overview_name"
+                android:padding="8dp"
+                android:textColor="@color/textPrimary"
+                android:textSize="20sp"
+                android:text="Edward's Wedding"
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <!-- Time icon -->
+            <ImageView
+                android:id="@+id/time_img"
+                android:src="@drawable/ic_access_time_black_24dp"
+                />
+            <!-- Event Overview Date -->
+            <TextView
+                android:id="@+id/event_overview_date"
+                android:padding="8dp"
+                android:textColor="@color/textPrimary"
+                android:textSize="20sp"
+                android:text="Saturday, 1 August"
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25dp"
+            android:paddingRight="16dp">
+
+            <!-- Empty column -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:orientation="vertical">
+            </LinearLayout>
+            <!-- Event Overview Time -->
+            <TextView
+                android:id="@+id/event_overview_time"
+                android:layout_span="2"
+                android:textSize="18sp"
+                android:text="7pm - 10pm"
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <!-- Location Icon -->
+            <ImageView
+                android:id="@+id/location_img"
+                android:src="@drawable/ic_location_on_black_24dp"
+                />
+            <!-- Event Overview Location -->
+            <TextView
+                android:id="@+id/event_overview_location"
+                android:padding="8dp"
+                android:textColor="@color/textPrimary"
+                android:textSize="20sp"
+                android:text="Marina Bay Sands"
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25dp"
+            android:paddingRight="16dp">
+
+            <!-- Empty column -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:orientation="vertical">
+            </LinearLayout>
+            <!-- Event Overview Location Address -->
+            <TextView
+                android:id="@+id/event_overview_location_add"
+                android:layout_span="2"
+                android:textSize="18sp"
+                android:text="10 Bayfront Avenue, Singapore 018956"
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <!-- Reorder icon -->
+            <ImageView
+                android:id="@+id/reorder_img"
+                android:src="@drawable/ic_reorder_black_24dp"
+                />
+            <!-- Event Overview Description -->
+            <TextView
+                android:id="@+id/event_overview_desc"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:textColor="@color/textSecondary"
+                android:textSize="20sp"
+                android:gravity="left"
+                android:textAlignment="gravity"
+                android:text="It will be the best day of my life! I finally get to marry the most
+     beloved Lorem Ipsum after 365 times of proposal! I am so happy!"
+                />
+        </TableRow>
+
+    </TableLayout>
+    <Button
+        android:id="@+id/next_btn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/padding_L"
+        android:layout_marginBottom="@dimen/padding_M"
+        android:background="@drawable/continuebtn"
+        android:text="Complete"
+        android:textColor="@color/accent"
+        />
+
+</LinearLayout>
+</ScrollView>
+</RelativeLayout>

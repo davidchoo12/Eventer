@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/activityBg">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title="Invite Member"
+        android:background="?attr/colorPrimary"/>
+    <EditText
+        android:id="@+id/add_members"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:textSize="18sp"
+        android:hint="Type a name..."
+        android:drawableLeft="@drawable/ic_search_black_24dp"/>
+
+    <Button
+        android:id="@+id/next_btn"
+        android:background="@drawable/continuebtn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="Confirm"
+        android:textColor="@color/accent"
+        android:layout_above="@+id/add_members_footer"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/add_members_footer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="Notification will be sent to the people you invited."
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        />
+
+</RelativeLayout>

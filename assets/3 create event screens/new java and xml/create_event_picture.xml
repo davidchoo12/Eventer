@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/activityBg"
+    >
+
+    <!-- Add Picture to New Event Screen -->
+
+    <!-- Add Event Image header -->
+    <TextView
+        android:id="@+id/add_event_img_header"
+        android:padding="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primary"
+        android:textSize="18sp"
+        android:text="@string/addEventImgHeader"
+        />
+
+    <!-- Add Event Image Description -->
+    <TextView
+        android:id="@+id/add_event_img_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:textColor="@color/textPrimary"
+        android:text="@string/addEventImgDesc"
+        android:gravity="center_horizontal" />
+
+    <!-- Added image placeholder -->
+    <ImageView
+        android:id="@+id/add_event_img_ph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/big_event_img"
+        />
+
+    <!-- Image buttons in 1 line -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <!-- Caption below image buttons -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="26dp">
+
+            <ImageButton
+                android:id="@+id/camera_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_camera"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/camera_button"
+                android:text="@string/photoBtnLbl"
+                />
+        </RelativeLayout>
+
+        <!-- Caption below image buttons -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="26dp">
+
+            <ImageButton
+                android:id="@+id/gallery_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_gallery"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/gallery_button"
+                android:text="@string/galleryBtnLbl"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
