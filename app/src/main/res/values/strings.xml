@@ -19,4 +19,9 @@
     <string name="title_activity_add_event_picture">CreateEventPicture</string>
     <string name="title_activity_add_event_members">CreateEventInvMembers</string>
     <string name="title_activity_add_event_overview">NewEventOverview</string>
+    <string name="title_activity_add_task">AddTask</string>
+
+    <string name="tab_section1">Tasks</string>
+    <string name="tab_section2">Members</string>
+    <string name="tab_section3">Details</string>
 </resources>

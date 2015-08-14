@@ -3,11 +3,11 @@ package com.eventer.eventer;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -34,7 +34,7 @@ public class AddTask extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(getApplicationContext(), CreateEventPicture.class);
+                Intent myIntent = new Intent(getApplicationContext(), EventSpecificActivity.class);
                 startActivity(myIntent);
             }
         });
@@ -59,10 +59,13 @@ public class AddTask extends AppCompatActivity {
         ian.setChecked(false);
         viewAdapter.add(ian);
 
+
+        //remove auto focus from textfields
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
     }
     public boolean onOptionsItemSelected(MenuItem item){
-        Intent myIntent = new Intent(getApplicationContext(), Main.class);
-        myIntent.putExtra(Main.SECTION, Main.Section.EVENT.name());
+        Intent myIntent = new Intent(getApplicationContext(), EventSpecificActivity.class);
         startActivity(myIntent);
         return true;
     }

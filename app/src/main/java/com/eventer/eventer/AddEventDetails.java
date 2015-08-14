@@ -2,40 +2,35 @@ package com.eventer.eventer;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ListView;
 import android.widget.TimePicker;
 
 import com.balysv.materialmenu.MaterialMenuDrawable;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 
 public class AddEventDetails extends AppCompatActivity {
+    private final String DATEFORMAT = "EEE, MMM d, yyyy";
+    private final String TIMEFORMAT = "h:mm aaa";
     private Toolbar mToolbar;
     private MaterialMenuDrawable materialMenu;
     private Calendar calendar = Calendar.getInstance();
     private DatePickerDialog.OnDateSetListener dateSetListener;
     private TimePickerDialog.OnTimeSetListener timeSetListener;
     private View datePickerCaller;
-    private final String DATEFORMAT = "EEE, MMM d, yyyy";
-    private final String TIMEFORMAT = "h:mm aaa";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,6 +108,10 @@ public class AddEventDetails extends AppCompatActivity {
         endDateBtn.setOnClickListener(datePickerListener);
         startTimeBtn.setOnClickListener(timePickerListener);
         endTimeBtn.setOnClickListener(timePickerListener);
+
+        //remove auto focus from textfields
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
 //        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
 //            @Override public void onClick(View v) {
 //                // Handle your drawable state here

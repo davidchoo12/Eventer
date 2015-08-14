@@ -1,30 +1,22 @@
 package com.eventer.eventer;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Locale;
-
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.TextView;
+
+import java.util.Locale;
 
 
 public class EventSpecificActivity extends AppCompatActivity implements ActionBar.TabListener {
@@ -50,7 +42,7 @@ public class EventSpecificActivity extends AppCompatActivity implements ActionBa
         setContentView(R.layout.activity_event_specific);
 
         // Set up the action bar.
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 //        ActionBar actionBar = getSupportActionBar();
 //        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -90,8 +82,6 @@ public class EventSpecificActivity extends AppCompatActivity implements ActionBa
     }
 
 
-
-
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
         // When the given tab is selected, switch to the corresponding page in
@@ -104,8 +94,31 @@ public class EventSpecificActivity extends AppCompatActivity implements ActionBa
     }
 
     @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction){}
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+    }
 
+    /**
+     * A placeholder fragment containing a simple view.
+     */
+    public static class EventTasksFragment extends PlaceholderFragment {
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            rootView = inflater.inflate(R.layout.fragment_event_tasks, container, false);
+            Fragment taskFragment = new Main.TasksFragment();
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.task_layout, taskFragment)
+                    .commit();
+            ((FloatingActionButton) rootView.findViewById(R.id.fab)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(getActivity(), AddTask.class);
+                    startActivity(i);
+                }
+            });
+            return rootView;
+        }
+    }
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -123,19 +136,20 @@ public class EventSpecificActivity extends AppCompatActivity implements ActionBa
             // Return a PlaceholderFragment (defined as a static inner class below).
             PlaceholderFragment fragment;
             //TODO: create screens and add them here
-            switch (position){
+            switch (position) {
                 case 0:
                     fragment = new EventTasksFragment();
                     break;
-                default: fragment = new Main.EventsFragment();
+                default:
+                    fragment = new Main.EventsFragment();
             }
             return fragment;
         }
 
         @Override
         public int getCount() {
-            // Show 5 total pages.
-            return 5;
+            // Show 3 total pages.
+            return 3;
         }
 
         @Override
@@ -152,34 +166,8 @@ public class EventSpecificActivity extends AppCompatActivity implements ActionBa
             return null;
         }
     }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class EventTasksFragment extends PlaceholderFragment {
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            rootView = inflater.inflate(R.layout.fragment_event_tasks, container, false);
-            Fragment taskFragment = new Main.TasksFragment();
-            getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.task_layout, taskFragment)
-                    .commit();
-            ((FloatingActionButton)rootView.findViewById(R.id.fab)).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(getActivity(), AddTask.class);
-                    startActivity(i);
-                }
-            });
-            return rootView;
-        }
-    }
 }
 //TODO implement linking with fab to add task activity
-
-
-
 
 
 //    @Override

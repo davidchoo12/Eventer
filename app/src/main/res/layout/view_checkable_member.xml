@@ -4,10 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     app:rv_centered="true">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="57dp">
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/checkable_member_img"
             android:layout_width="57dp"
@@ -15,38 +20,40 @@
             android:layout_centerVertical="true"
             android:src="@drawable/event_image"
             app:border_color="#FF000000"/>
+
         <TextView
             android:id="@+id/checkable_member_name"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_toRightOf="@id/checkable_member_img"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/checkable_member_img"
             android:paddingLeft="@dimen/padding_S"
             android:text="Member name"
-            android:textSize="@dimen/text_subhead"
             android:textColor="@color/textPrimary"
+            android:textSize="@dimen/text_subhead"
             />
+
         <TextView
             android:id="@+id/checkable_member_email"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_below="@id/checkable_member_name"
+            android:layout_height="wrap_content"
             android:layout_alignLeft="@id/checkable_member_name"
-            android:paddingLeft="@dimen/padding_S"
             android:layout_alignParentBottom="true"
+            android:layout_below="@id/checkable_member_name"
             android:gravity="bottom"
+            android:paddingLeft="@dimen/padding_S"
             android:text="Member.name@email.com"
-            android:textSize="@dimen/text_small"
             android:textColor="@color/textPrimary"
+            android:textSize="@dimen/text_small"
             />
+
         <CheckBox
             android:id="@+id/checkable_member_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:buttonTint="@color/primary"
+            android:layout_centerVertical="true"
+            android:gravity="center"
             />
     </RelativeLayout>
 </com.andexert.library.RippleView>
