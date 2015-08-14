@@ -1,0 +1,13 @@
+Eventer is an app that purposes to assist users in event planning. It eases users in managing events they are involved in as well as tasks that are assigned for them. The app largely complies with the Material Design guidelines and is heavily supported by Azure Mobile Service.
+
+Technical details:
+It uses AppCompatActivity with Toolbar to allow backward compatibility.
+It also uses third party libraries to further emphasise Material Design.
+For the tabbed layout, Google's Design Support library is used for CoordinatorLayout and FloatingActionButton
+Custom views are created to allow dynamic CRUD (create, read, update, delete)
+A custom Adapter named ViewAdapter is coded with generic type, for integration with the backend
+
+Azure Mobile Service is used as the backend for this app. It stores members and events.
+
+Designs and screens by: David Choo and Lam Xin Wei
+Backend integration by: Ian Soo
